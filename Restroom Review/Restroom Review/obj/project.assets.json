@@ -198,11 +198,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\johns\\source\\repos\\Restroom Review\\Restroom Review\\Restroom Review.csproj",
+      "projectUniqueName": "C:\\Users\\johns\\workspace\\C47Demos\\Restroom-Review\\Restroom Review\\Restroom Review\\Restroom Review.csproj",
       "projectName": "Restroom Review",
-      "projectPath": "C:\\Users\\johns\\source\\repos\\Restroom Review\\Restroom Review\\Restroom Review.csproj",
+      "projectPath": "C:\\Users\\johns\\workspace\\C47Demos\\Restroom-Review\\Restroom Review\\Restroom Review\\Restroom Review.csproj",
       "packagesPath": "C:\\Users\\johns\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\johns\\source\\repos\\Restroom Review\\Restroom Review\\obj\\",
+      "outputPath": "C:\\Users\\johns\\workspace\\C47Demos\\Restroom-Review\\Restroom Review\\Restroom Review\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\johns\\AppData\\Roaming\\NuGet\\NuGet.Config",
