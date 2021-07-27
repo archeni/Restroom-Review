@@ -1,0 +1,17 @@
+import React from "react";
+import { Card, CardBody } from "reactstrap";
+import { Link } from "react-router-dom";
+
+export const Bathroom = ({ bathroom }) => {
+  return (
+    <Card >
+      <CardBody>
+        <p>{bathroom.placeName}</p>
+        <p><Link to={`/bathroom/delete/${bathroom.id}`}>Delete</Link></p>
+        <p><Link to={`/bathroom/edit/${bathroom.id}`}>Edit</Link></p>
+      </CardBody>
+    </Card>
+  );
+};
+
+export default Bathroom;
