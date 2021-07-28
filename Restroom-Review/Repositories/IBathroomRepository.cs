@@ -7,5 +7,6 @@ namespace RestroomReview.Repositories
     {
         List<Bathroom> GetAll();
         Bathroom GetById(int id);
+        void Add(Bathroom bathroom);
     }
 }

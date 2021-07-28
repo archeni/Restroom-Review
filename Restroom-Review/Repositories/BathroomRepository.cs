@@ -51,7 +51,7 @@ namespace RestroomReview.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT Id, PlaceName, Address 
+                    cmd.CommandText = @"SELECT Id, PlaceName, Address, DateCreated, UserId 
                             FROM Bathroom
                     Where Id = @Id";
 
@@ -73,6 +73,26 @@ namespace RestroomReview.Repositories
                     reader.Close();
 
                     return bathroom;
+                }
+            }
+        }
+
+        public void Add(Bathroom bathroom)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"INSERT INTO Bathroom (PlaceName, Address, DateCreated, UserId)
+                                        OUTPUT INSERTED.ID
+                                        VALUES (@PlaceName, @Address, @DateCreated, @UserId)";
+                    DbUtils.AddParameter(cmd, "@PlaceName", bathroom.PlaceName);
+                    DbUtils.AddParameter(cmd, "@Address", bathroom.Address);
+                    DbUtils.AddParameter(cmd, "@DateCreated", bathroom.DateCreated);
+                    DbUtils.AddParameter(cmd, "@UserId", bathroom.UserId);
+
+                    bathroom.Id = (int)cmd.ExecuteScalar();
                 }
             }
         }
