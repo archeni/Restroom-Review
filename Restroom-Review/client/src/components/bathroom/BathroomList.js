@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Bathroom from './Bathroom';
-import { getAllBathrooms } from "../../modules/bathroomManager";
+import { getAllBathrooms, Search } from "../../modules/bathroomManager";
 import { Link } from "react-router-dom";
 
 const BathroomList = () => {
@@ -8,6 +8,14 @@ const BathroomList = () => {
 
   const getBathrooms = () => {
     getAllBathrooms().then(bathrooms => setBathrooms(bathrooms));
+  };
+
+  const searchBathrooms = (event) => {
+    event.preventDefault();
+    let bathroomInput = event.target.value;
+    let searchMatch = {};
+    searchMatch[event.target.id] = bathroomInput;
+    Search(bathroomInput, true).then(bathrooms => setBathrooms(bathrooms))
   };
 
   useEffect(() => {
@@ -18,6 +26,9 @@ const BathroomList = () => {
     <>
       <h3>Bathrooms:</h3>
       <Link to='/add'>Add a Bathroom</Link>
+      <form className='bathroomForm'>
+        <input placeholder='Search' onChange={searchBathrooms}></input>
+      </form>
       <div className="container">
         <div className="row justify-content-center">
           {bathrooms.map((bathroom) => {

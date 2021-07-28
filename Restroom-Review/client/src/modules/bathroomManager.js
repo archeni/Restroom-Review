@@ -62,3 +62,12 @@ export const getBathroomById = (id) => {
       }
     }).then((res) => res.json()));
 };
+
+export const Search = (searchTerm) => {
+  return getToken().then((token) =>
+    fetch(`${baseUrl}/search?q=${searchTerm}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then((res) => res.json()));
+};

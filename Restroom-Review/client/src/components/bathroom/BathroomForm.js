@@ -35,11 +35,11 @@ export const BathroomForm = () => {
     <Form>
       <FormGroup>
         <Label for="placeName">Name</Label>
-        <Input type="text" name="placeName" id="placeName" placeholder="bathroom name"
+        <Input type="text" name="placeName" id="placeName" placeholder="Name of Establishment"
           value={bathroom.placeName}
           onChange={handleInputChange} />
         <Label for="address">Name</Label>
-        <Input type="text" name="address" id="address" placeholder="bathroom address"
+        <Input type="text" name="address" id="address" placeholder="Address"
           value={bathroom.address}
           onChange={handleInputChange} />
       </FormGroup>
