@@ -7,6 +7,7 @@ export const Bathroom = ({ bathroom }) => {
     <Card >
       <CardBody>
         <p>{bathroom.placeName}</p>
+        <p>{bathroom.address}</p>
         <p><Link to={`/bathroom/delete/${bathroom.id}`}>Delete</Link></p>
         <p><Link to={`/bathroom/edit/${bathroom.id}`}>Edit</Link></p>
       </CardBody>
