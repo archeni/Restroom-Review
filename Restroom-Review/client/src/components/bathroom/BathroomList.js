@@ -17,7 +17,7 @@ const BathroomList = () => {
   return (
     <>
       <h3>Bathrooms:</h3>
-      <Link to='Bathroom/add'>Add a Bathroom</Link>
+      <Link to='/add'>Add a Bathroom</Link>
       <div className="container">
         <div className="row justify-content-center">
           {bathrooms.map((bathroom) => {
