@@ -96,5 +96,50 @@ namespace RestroomReview.Repositories
                 }
             }
         }
+
+        public List<Bathroom> Search(string criterion, bool sortDescending)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    var sql = @"
+              SELECT Id, PlaceName, Address, DateCreated, UserId 
+                            FROM Bathroom
+               WHERE PlaceName LIKE @Criterion OR Address LIKE @Criterion";
+
+                    if (sortDescending)
+                    {
+                        sql += " ORDER BY DateCreated DESC";
+                    }
+                    else
+                    {
+                        sql += " ORDER BY DateCreated";
+                    }
+
+                    cmd.CommandText = sql;
+                    DbUtils.AddParameter(cmd, "@Criterion", $"%{criterion}%");
+                    var reader = cmd.ExecuteReader();
+
+                    var bathrooms = new List<Bathroom>();
+                    while (reader.Read())
+                    {
+                        bathrooms.Add(new Bathroom()
+                        {
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            PlaceName = DbUtils.GetString(reader, "PlaceName"),
+                            Address = DbUtils.GetString(reader, "Address"),
+                            DateCreated = DbUtils.GetDateTime(reader, "DateCreated"),
+                            UserId = DbUtils.GetInt(reader, "UserId"),
+                        });
+                    }
+
+                    reader.Close();
+
+                    return bathrooms;
+                }
+            }
+        }
     }
 }

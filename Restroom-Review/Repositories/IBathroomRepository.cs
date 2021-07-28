@@ -8,5 +8,6 @@ namespace RestroomReview.Repositories
         List<Bathroom> GetAll();
         Bathroom GetById(int id);
         void Add(Bathroom bathroom);
+        List<Bathroom> Search(string criterion, bool sortDescending);
     }
 }

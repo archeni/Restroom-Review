@@ -56,5 +56,11 @@ namespace RestroomReview.Controllers
             var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return _userProfileRepository.GetByFirebaseUserId(firebaseUserId);
         }
+
+        [HttpGet("search")]
+        public IActionResult Search(string q, bool sortDesc)
+        {
+            return Ok(_bathroomRepository.Search(q, sortDesc));
+        }
     }
 }
