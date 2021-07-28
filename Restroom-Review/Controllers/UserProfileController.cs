@@ -53,6 +53,13 @@ namespace RestroomReview.Controllers
             return Ok();
         }
 
+        [HttpPost]
+        public IActionResult Post(UserProfile userProfile)
+        {
+            _userProfileRepository.Add(userProfile);
+            return CreatedAtAction("Get", new { id = userProfile.Id }, userProfile);
+        }
+
         private UserProfile GetCurrentUserProfile()
         {
             var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;

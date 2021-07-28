@@ -20,9 +20,8 @@ namespace RestroomReview.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                            SELECT Id, PlaceName, Address
-                            FROM Bathroom
-                            ";
+                            SELECT Id, PlaceName, Address, DateCreated, UserId
+                            FROM Bathroom";
                     var reader = cmd.ExecuteReader();
 
                     var bathroom = new List<Bathroom>();
@@ -31,9 +30,11 @@ namespace RestroomReview.Repositories
                     {
                         bathroom.Add(new Bathroom()
                         {
-                            Id = reader.GetInt32(reader.GetOrdinal("Id")),
-                            PlaceName = reader.GetString(reader.GetOrdinal("PlaceName")),
-                            Address = DbUtils.GetString(reader, "Address")
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            PlaceName = DbUtils.GetString(reader, "PlaceName"),
+                            Address = DbUtils.GetString(reader, "Address"),
+                            DateCreated = DbUtils.GetDateTime(reader, "DateCreated"),
+                            UserId = DbUtils.GetInt(reader, "UserId")
                         });
                     }
                     reader.Close();
