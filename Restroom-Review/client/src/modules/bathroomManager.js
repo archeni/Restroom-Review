@@ -15,6 +15,7 @@ export const getAllBathrooms = () => {
 };
 
 export const addBathroom = (bathroom) => {
+  debugger
   return getToken().then((token) =>
     fetch(baseUrl, {
       method: "POST",
