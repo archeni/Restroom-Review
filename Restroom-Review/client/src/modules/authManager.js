@@ -26,7 +26,6 @@ const _saveUser = (userProfile) => {
     }).then(resp => resp.json()));
 };
 
-
 export const getToken = () => {
   const currentUser = firebase.auth().currentUser;
   if (!currentUser) {

@@ -4,6 +4,7 @@ import "firebase/auth";
 const baseUrl = '/api/bathroom';
 
 export const getAllBathrooms = () => {
+  debugger
   return getToken().then((token) =>
     fetch(`${baseUrl}`, {
       method: "GET",

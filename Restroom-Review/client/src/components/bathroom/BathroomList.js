@@ -17,14 +17,14 @@ const BathroomList = () => {
   return (
     <>
       <h3>Bathrooms:</h3>
-      {/* <Link to='Bathroom/add'>Add a Tag</Link>
+      <Link to='Bathroom/add'>Add a Bathroom</Link>
       <div className="container">
         <div className="row justify-content-center">
-          {bathrooms.map((bathroom) => (
-            <Bathroom bathroom={bathroom} key={bathroom.id} />
-          ))}
+          {bathrooms.map((bathroom) => {
+            return <Bathroom bathroom={bathroom} key={bathroom.id} />
+          })}
         </div>
-      </div> */}
+      </div>
     </>
   );
 };
