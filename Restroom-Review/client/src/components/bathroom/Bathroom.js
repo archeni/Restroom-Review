@@ -9,8 +9,8 @@ export const Bathroom = ({ bathroom }) => {
         <p>{bathroom.placeName}</p>
         <p>{bathroom.address}</p>
         <p>{bathroom.dateCreated}</p>
+        <p><Link to={`/review/${bathroom.id}`}>Reviews</Link></p>
         <p><Link to={`/delete/${bathroom.id}`}>Delete</Link></p>
-        <p><Link to={`/edit/${bathroom.id}`}>Edit</Link></p>
       </CardBody>
     </Card>
   );
