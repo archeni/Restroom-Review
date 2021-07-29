@@ -62,5 +62,12 @@ namespace RestroomReview.Controllers
         {
             return Ok(_bathroomRepository.Search(q, sortDesc));
         }
+
+        [HttpDelete("delete/{id}")]
+        public IActionResult Delete(int id)
+        {
+            _bathroomRepository.Delete(id);
+            return NoContent();
+        }
     }
 }
