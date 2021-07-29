@@ -5,6 +5,7 @@ import BathroomForm from './bathroom/BathroomForm';
 import BathroomList from './bathroom/BathroomList';
 import Login from "./Login";
 import Register from "./Register";
+import ReviewList from './review/ReviewList';
 
 export default function ApplicationViews({ isLoggedIn }) {
   useEffect(() => {
@@ -24,6 +25,10 @@ export default function ApplicationViews({ isLoggedIn }) {
 
         <Route path="/delete/:id" exact>
           {isLoggedIn ? <BathroomDelete /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/review/:id" exact>
+          {isLoggedIn ? <ReviewList /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/login">

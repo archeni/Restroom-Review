@@ -31,6 +31,7 @@ namespace Restroom_Review
         {
             services.AddTransient<IBathroomRepository, BathroomRepository>();
             services.AddTransient<IUserProfileRepository, UserProfileRepository>();
+            services.AddTransient<IReviewRepository, ReviewRepository>();
 
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
             var googleTokenUrl = $"https://securetoken.google.com/{firebaseProjectId}";

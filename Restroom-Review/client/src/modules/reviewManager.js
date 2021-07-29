@@ -1,9 +1,9 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 
-const baseUrl = '/api/bathroom';
+const baseUrl = '/api/review';
 
-export const getAllBathrooms = () => {
+export const getAllReviews = () => {
   debugger
   return getToken().then((token) =>
     fetch(`${baseUrl}`, {
@@ -14,7 +14,7 @@ export const getAllBathrooms = () => {
     }).then(resp => resp.json()));
 };
 
-export const addBathroom = (bathroom) => {
+export const addReview = (review) => {
   debugger
   return getToken().then((token) =>
     fetch(baseUrl, {
@@ -23,11 +23,11 @@ export const addBathroom = (bathroom) => {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(bathroom),
+      body: JSON.stringify(review),
     })).then(resp => resp.json())
 };
 
-export const deleteBathroom = (id) => {
+export const deleteReview = (id) => {
   return getToken().then((token) =>
     fetch(`${baseUrl}/delete/${id}`, {
       method: "DELETE",
@@ -39,21 +39,24 @@ export const deleteBathroom = (id) => {
     }))
 };
 
+export const editReview = (review) => {
+  return getToken().then((token) =>
+    fetch(`${baseUrl}/edit/${review.id}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(review),
+    }))
+};
+
 export const getToken = () => firebase.auth().currentUser.getIdToken();
 
-export const getBathroomById = (id) => {
+export const getReviewById = (id) => {
   return getToken().then((token) =>
     fetch(`${baseUrl}/${id}`, {
       method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }).then((res) => res.json()));
-};
-
-export const Search = (searchTerm) => {
-  return getToken().then((token) =>
-    fetch(`${baseUrl}/search?q=${searchTerm}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
