@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Switch, Route, Redirect } from "react-router-dom";
+import BathroomDelete from './bathroom/BathroomDelete';
 import BathroomForm from './bathroom/BathroomForm';
 import BathroomList from './bathroom/BathroomList';
 import Login from "./Login";
@@ -19,6 +20,10 @@ export default function ApplicationViews({ isLoggedIn }) {
 
         <Route path="/add" exact>
           {isLoggedIn ? <BathroomForm /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/delete/:id" exact>
+          {isLoggedIn ? <BathroomDelete /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/login">
