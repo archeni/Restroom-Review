@@ -18,9 +18,9 @@ namespace RestroomReview.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"INSERT INTO Review (Comment, Rating, DateCreated, UserId)
+                    cmd.CommandText = @"INSERT INTO Review (Comment, Rating, DateCreated, UserId, BathroomId)
                                         OUTPUT INSERTED.ID
-                                        VALUES (@Comment, @Rating, @DateCreated, @UserId)";
+                                        VALUES (@Comment, @Rating, @DateCreated, @UserId, @BathroomId)";
                     DbUtils.AddParameter(cmd, "@Comment", review.Comment);
                     DbUtils.AddParameter(cmd, "@Rating", review.Rating);
                     DbUtils.AddParameter(cmd, "@DateCreated", review.DateCreated);

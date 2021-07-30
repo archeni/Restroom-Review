@@ -4,7 +4,6 @@ import "firebase/auth";
 const baseUrl = '/api/review';
 
 export const getAllReviews = () => {
-  debugger
   return getToken().then((token) =>
     fetch(`${baseUrl}`, {
       method: "GET",
@@ -15,7 +14,6 @@ export const getAllReviews = () => {
 };
 
 export const addReview = (review) => {
-  debugger
   return getToken().then((token) =>
     fetch(baseUrl, {
       method: "POST",

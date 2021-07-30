@@ -23,12 +23,20 @@ export const ReviewForm = () => {
     setReview(reviewCopy);
   };
 
+  const handleGoingBack = () => {
+    history.push(`/review/${id}`);
+  }
+
   const handleSave = (evt) => {
     evt.preventDefault();
 
+    review.bathroomId = id;
+
+    console.log(review);
+
     addReview(review).then((p) => {
       // Navigate the user back to the home route
-      history.push("/");
+      history.push(`/review/${id}`);
     });
   };
 
@@ -40,7 +48,7 @@ export const ReviewForm = () => {
           value={review.comment}
           onChange={handleInputChange} />
       </FormGroup>
-      <select value={review.rating} name="rating" id="rating" onChange={handleInputChange} className='form-control'>
+      <select type='radio' value={review.rating} name="rating" id="rating" onChange={handleInputChange} className='form-control'>
         <option value={0}>Select a Rating</option>
         <option value={0}>0</option>
         <option value={1}>1</option>
@@ -55,6 +63,7 @@ export const ReviewForm = () => {
         <option value={10}>10</option>
       </select>
       <Button className="btn btn-primary" onClick={handleSave}>Submit</Button>
+      <Button className="btn btn-primary" onClick={handleGoingBack}>Back</Button>
     </Form>
   );
 };
