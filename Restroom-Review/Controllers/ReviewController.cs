@@ -52,5 +52,12 @@ namespace RestroomReview.Controllers
             var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return _userProfileRepository.GetByFirebaseUserId(firebaseUserId);
         }
+
+        [HttpDelete("delete/{id}")]
+        public IActionResult Delete(int id)
+        {
+            _reviewRepository.Delete(id);
+            return NoContent();
+        }
     }
 }

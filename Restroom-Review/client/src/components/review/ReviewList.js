@@ -35,7 +35,7 @@ const ReviewList = () => {
       <div className="container">
         <div className="row justify-content-center">
           {reviews.map((review) => {
-            return <Review review={review} key={review.id} />
+            return <Review review={review} key={review.id} bathroomId={bathroom.id} />
           })}
         </div>
       </div>

@@ -9,8 +9,8 @@ export const Review = ({ review }) => {
         <p>{review.rating}/10</p>
         <p>{review.comment}</p>
         <p>{review.dateCreated}</p>
-        <p><Link to={`/edit/${review.id}`}>Edit</Link></p>
-        <p><Link to={`/delete/${review.id}`}>Delete</Link></p>
+        <p><Link to={`/review/edit/${review.id}`}>Edit</Link></p>
+        <p><Link to={`/review/delete/${review.id}`}>Delete</Link></p>
       </CardBody>
     </Card>
   );
