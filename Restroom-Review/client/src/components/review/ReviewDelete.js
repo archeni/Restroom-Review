@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { deleteReview, getReviewById } from "../../modules/reviewManager";
 
-export const ReviewDelete = ({ bathroomId }) => {
+export const ReviewDelete = () => {
   const [singleReview, setReview] = useState([]);
-  const { id } = useParams();
+  const { id, bathroomId } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
   const [bathroom, setBathroom] = useState([]);
@@ -25,7 +25,6 @@ export const ReviewDelete = ({ bathroomId }) => {
   useEffect(() => {
     getReview(id);
     setBathroom(bathroom)
-    console.log(bathroomId);
   }, []);
 
   return (

@@ -37,7 +37,7 @@ export default function ApplicationViews({ isLoggedIn }) {
           {isLoggedIn ? <ReviewForm /> : <Redirect to="/login" />}
         </Route>
 
-        <Route path="/review/delete/:id" exact>
+        <Route path="/review/delete/:id/:bathroomId" exact>
           {isLoggedIn ? <ReviewDelete /> : <Redirect to="/login" />}
         </Route>
 

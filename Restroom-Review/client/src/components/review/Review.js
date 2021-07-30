@@ -10,7 +10,7 @@ export const Review = ({ review, bathroomId }) => {
         <p>{review.comment}</p>
         <p>{review.dateCreated}</p>
         <p><Link to={`/review/edit/${review.id}`}>Edit</Link></p>
-        <p><Link to={`/review/delete/${review.id}`}>Delete</Link></p>
+        <p><Link to={`/review/delete/${review.id}/${bathroomId}`}>Delete</Link></p>
       </CardBody>
     </Card>
   );
