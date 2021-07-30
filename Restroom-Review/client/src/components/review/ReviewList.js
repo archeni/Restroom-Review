@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Bathroom from '../bathroom/Bathroom';
 import { getBathroomById } from "../../modules/bathroomManager";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { getReviewById } from "../../modules/reviewManager";
@@ -31,6 +30,7 @@ const ReviewList = () => {
   return (
     <>
       <h3>Bathroom: {bathroom.placeName}</h3>
+      <Link to={`/review/add/${bathroom.id}`}>Add a Review</Link>
       <h3>Reviews:</h3>
       <div className="container">
         <div className="row justify-content-center">
