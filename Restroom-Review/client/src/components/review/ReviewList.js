@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getBathroomById } from "../../modules/bathroomManager";
 import { Link, useHistory, useParams } from "react-router-dom";
-import { getReviewById } from "../../modules/reviewManager";
+import { getReviewByBathroomId } from "../../modules/reviewManager";
 import Review from "./Review";
 
 const ReviewList = () => {
@@ -13,19 +13,19 @@ const ReviewList = () => {
 
   const getBathroom = (id) => {
     getBathroomById(id).then(oneBathroom => setBathroom(oneBathroom));
-    setIsLoading(false);
+    // setIsLoading(false);
   }
 
   const getReviews = (id) => {
-    getReviewById(id).then(oneReview => setReviews(oneReview));
-    setIsLoading(false);
+    getReviewByBathroomId(id).then(oneReview => setReviews(oneReview));
+    // setIsLoading(false);
   }
 
 
   useEffect(() => {
     getBathroom(id);
     getReviews(id);
-  })
+  }, []);
 
   return (
     <>
@@ -35,7 +35,7 @@ const ReviewList = () => {
       <div className="container">
         <div className="row justify-content-center">
           {reviews.map((review) => {
-            return <Review review={review} key={review.id} />
+            return <Review review={review} key={review.id} bathroomId={id} />
           })}
         </div>
       </div>

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace RestroomReview.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ReviewController : ControllerBase
@@ -36,6 +36,17 @@ namespace RestroomReview.Controllers
             return Ok(reviews);
         }
 
+        [HttpGet("bathroom/{id}")]
+        public IActionResult GetByBathroom(int id)
+        {
+            var reviews = _reviewRepository.GetByBathroomId(id);
+            if (reviews == null)
+            {
+                return NotFound();
+            }
+            return Ok(reviews);
+        }
+
         [HttpPost]
         public IActionResult Add(Review review)
         {
@@ -51,6 +62,13 @@ namespace RestroomReview.Controllers
         {
             var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return _userProfileRepository.GetByFirebaseUserId(firebaseUserId);
+        }
+
+        [HttpDelete("delete/{id}")]
+        public IActionResult Delete(int id)
+        {
+            _reviewRepository.Delete(id);
+            return NoContent();
         }
     }
 }
