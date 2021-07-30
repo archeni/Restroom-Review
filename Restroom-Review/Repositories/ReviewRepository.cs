@@ -78,7 +78,43 @@ namespace RestroomReview.Repositories
             }
         }
 
-        public List<Review> GetById(int id)
+        public Review GetById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT Id, Comment, DateCreated, Rating, UserId, BathroomId
+                            FROM Review
+                    Where Id = @Id";
+
+                    DbUtils.AddParameter(cmd, "@Id", id);
+
+                    var reader = cmd.ExecuteReader();
+
+                    Review review = null;
+                    if (reader.Read())
+                    {
+                        review = new Review()
+                        {
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            Comment = DbUtils.GetString(reader, "Comment"),
+                            Rating = DbUtils.GetInt(reader, "Rating"),
+                            DateCreated = DbUtils.GetDateTime(reader, "DateCreated"),
+                            UserId = DbUtils.GetInt(reader, "UserId"),
+                            BathroomId = DbUtils.GetInt(reader, "BathroomId")
+                        };
+                    }
+
+                    reader.Close();
+
+                    return review;
+                }
+            }
+        }
+
+        public List<Review> GetByBathroomId(int id)
         {
             using (var conn = Connection)
             {

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace RestroomReview.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ReviewController : ControllerBase
@@ -29,6 +29,17 @@ namespace RestroomReview.Controllers
         public IActionResult Get(int id)
         {
             var reviews = _reviewRepository.GetById(id);
+            if (reviews == null)
+            {
+                return NotFound();
+            }
+            return Ok(reviews);
+        }
+
+        [HttpGet("bathroom/{id}")]
+        public IActionResult GetByBathroom(int id)
+        {
+            var reviews = _reviewRepository.GetByBathroomId(id);
             if (reviews == null)
             {
                 return NotFound();

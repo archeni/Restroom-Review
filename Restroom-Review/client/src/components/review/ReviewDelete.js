@@ -7,6 +7,7 @@ export const ReviewDelete = ({ bathroomId }) => {
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
+  const [bathroom, setBathroom] = useState([]);
 
   const getReview = (id) => {
     getReviewById(id).then(oneReview => setReview(oneReview));
@@ -23,7 +24,9 @@ export const ReviewDelete = ({ bathroomId }) => {
 
   useEffect(() => {
     getReview(id);
-  })
+    setBathroom(bathroom)
+    console.log(bathroomId);
+  }, []);
 
   return (
     <>

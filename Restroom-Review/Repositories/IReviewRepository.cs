@@ -9,7 +9,8 @@ namespace RestroomReview.Repositories
     public interface IReviewRepository
     {
         List<Review> GetAll();
-        List<Review> GetById(int id);
+        List<Review> GetByBathroomId(int id);
+        Review GetById(int id);
         void Add(Review bathroom);
         void Delete(int id);
     }
