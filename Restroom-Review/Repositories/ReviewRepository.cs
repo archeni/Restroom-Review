@@ -148,5 +148,27 @@ namespace RestroomReview.Repositories
                 }
             }
         }
+
+        public void Update(Review review)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE Review
+                           SET Comment = @Comment,
+                            Rating = @Rating
+                         WHERE Id = @Id";
+
+                    DbUtils.AddParameter(cmd, "@Comment", review.Comment);
+                    DbUtils.AddParameter(cmd, "@Rating", review.Rating);
+                    DbUtils.AddParameter(cmd, "@Id", review.Id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

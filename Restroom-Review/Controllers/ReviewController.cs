@@ -70,5 +70,16 @@ namespace RestroomReview.Controllers
             _reviewRepository.Delete(id);
             return NoContent();
         }
+
+        [HttpPut("edit/{id}")]
+        public IActionResult Edit(int id, Review review)
+        {
+            if (id != review.Id)
+            {
+                return BadRequest();
+            }
+            _reviewRepository.Update(review);
+            return NoContent();
+        }
     }
 }
