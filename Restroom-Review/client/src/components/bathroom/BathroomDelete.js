@@ -17,13 +17,12 @@ export const BathroomDelete = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    deleteBathroom(singleBathroom.id)
-      .then(() => history.push('/'))
+    deleteBathroom(singleBathroom.id).then(() => history.push('/'))
   }
 
   useEffect(() => {
     getBathroom(id);
-  })
+  }, []);
 
   return (
     <>

@@ -45,6 +45,7 @@ namespace RestroomReview.Repositories
                 }
             }
         }
+
         public List<Review> GetAll()
         {
             using (var conn = Connection)

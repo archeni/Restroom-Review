@@ -30,7 +30,11 @@ const ReviewList = () => {
   return (
     <>
       <h3>Bathroom: {bathroom.placeName}</h3>
+      <Link to={`/delete/${bathroom.id}`}>Delete Bathroom</Link>
+      <hr></hr>
       <Link to={`/review/add/${bathroom.id}`}>Add a Review</Link>
+      <hr></hr>
+      <Link to='/'>Back to Homepage</Link>
       <h3>Reviews:</h3>
       <div className="container">
         <div className="row justify-content-center">
@@ -39,7 +43,6 @@ const ReviewList = () => {
           })}
         </div>
       </div>
-      <Link to='/'>Back to Homepage</Link>
     </>
   );
 };

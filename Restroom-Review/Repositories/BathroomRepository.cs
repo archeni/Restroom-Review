@@ -149,7 +149,8 @@ namespace RestroomReview.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"DELETE Bathroom WHERE Id=@Id";
+                    cmd.CommandText = @"DELETE From Review WHERE BathroomId=@Id
+                        DELETE From Bathroom WHERE Id=@Id";
                     cmd.Parameters.AddWithValue("@Id", id);
                     cmd.ExecuteNonQuery();
                 }
