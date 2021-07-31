@@ -13,5 +13,6 @@ namespace RestroomReview.Repositories
         Review GetById(int id);
         void Add(Review bathroom);
         void Delete(int id);
+        void Update(Review review);
     }
 }

@@ -6,6 +6,7 @@ import BathroomList from './bathroom/BathroomList';
 import Login from "./Login";
 import Register from "./Register";
 import ReviewDelete from './review/ReviewDelete';
+import ReviewEdit from './review/ReviewEdit';
 import ReviewForm from './review/ReviewForm';
 import ReviewList from './review/ReviewList';
 
@@ -39,6 +40,10 @@ export default function ApplicationViews({ isLoggedIn }) {
 
         <Route path="/review/delete/:id/:bathroomId" exact>
           {isLoggedIn ? <ReviewDelete /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/review/edit/:id/:bathroomId" exact>
+          {isLoggedIn ? <ReviewEdit /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/login">
