@@ -25,6 +25,14 @@ namespace RestroomReview.Controllers
             return Ok(_userProfileRepository.GetAll());
         }
 
+        [HttpGet("currentUser")]
+        public IActionResult GetCurrentUserProfile()
+        {
+            var currentUserProfile = GetCurrentUser();
+            var user = currentUserProfile.Id;
+            return Ok(user);
+        }
+
         [HttpGet("{firebaseUserId}")]
         public IActionResult GetUserProfile(string firebaseUserId)
         {
@@ -60,7 +68,7 @@ namespace RestroomReview.Controllers
             return CreatedAtAction("Get", new { id = userProfile.Id }, userProfile);
         }
 
-        private UserProfile GetCurrentUserProfile()
+        private UserProfile GetCurrentUser()
         {
             var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return _userProfileRepository.GetByFirebaseUserId(firebaseUserId);
