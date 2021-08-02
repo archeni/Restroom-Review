@@ -2,13 +2,19 @@ import React, { useEffect, useState } from "react";
 import Bathroom from './Bathroom';
 import { getAllBathrooms, Search } from "../../modules/bathroomManager";
 import { Link } from "react-router-dom";
+import { getUserProfileId } from "../../modules/userProfileManager";
 
 const BathroomList = () => {
   const [bathrooms, setBathrooms] = useState([]);
+  const [currentUser, setUser] = useState([]);
 
   const getBathrooms = () => {
     getAllBathrooms().then(bathrooms => setBathrooms(bathrooms));
   };
+
+  const getUser = () => {
+    getUserProfileId().then(oneUser => setUser(oneUser.id));
+  }
 
   const searchBathrooms = (event) => {
     event.preventDefault();
@@ -20,6 +26,7 @@ const BathroomList = () => {
 
   useEffect(() => {
     getBathrooms();
+    getUser();
   }, []);
 
   return (
@@ -32,7 +39,7 @@ const BathroomList = () => {
       <div className="container">
         <div className="row justify-content-center">
           {bathrooms.map((bathroom) => {
-            return <Bathroom bathroom={bathroom} key={bathroom.id} />
+            return <Bathroom bathroom={bathroom} key={bathroom.id} user={currentUser} />
           })}
         </div>
       </div>
