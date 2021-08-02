@@ -29,8 +29,7 @@ namespace RestroomReview.Controllers
         public IActionResult GetCurrentUserProfile()
         {
             var currentUserProfile = GetCurrentUser();
-            var user = currentUserProfile.Id;
-            return Ok(user);
+            return Ok(currentUserProfile);
         }
 
         [HttpGet("{firebaseUserId}")]
