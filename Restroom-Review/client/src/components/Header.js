@@ -4,12 +4,13 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink
 } from 'reactstrap';
 import { logout } from '../modules/authManager';
+import bathroomLogo from '../images/Restroom-Review-icon.png';
+import './Header.css';
 
 export default function Header({ isLoggedIn }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,9 +20,9 @@ export default function Header({ isLoggedIn }) {
   }, []);
 
   return (
-    <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand tag={RRNavLink} to="/">Restroom Review</NavbarBrand>
+    <>
+      <Navbar className='navMain' color="light" light expand="md">
+        <img src={bathroomLogo} alt='bathroom logo' />
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -56,6 +57,6 @@ export default function Header({ isLoggedIn }) {
           </Nav>
         </Collapse>
       </Navbar>
-    </div >
+    </>
   );
 }

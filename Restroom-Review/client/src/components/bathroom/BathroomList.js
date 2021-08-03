@@ -3,6 +3,7 @@ import Bathroom from './Bathroom';
 import { getAllBathrooms, Search } from "../../modules/bathroomManager";
 import { Link } from "react-router-dom";
 import { getUserProfileId } from "../../modules/userProfileManager";
+import './Bathroom.css';
 
 const BathroomList = () => {
   const [bathrooms, setBathrooms] = useState([]);
@@ -31,11 +32,13 @@ const BathroomList = () => {
 
   return (
     <>
-      <h3>Bathrooms:</h3>
-      <Link to='/add'>Add a Bathroom</Link>
-      <form className='bathroomForm'>
-        <input placeholder='Search' onChange={searchBathrooms}></input>
-      </form>
+      <section className='bathroomHeader'>
+        <h3>Bathrooms:</h3>
+        <Link to='/add'>Add a Bathroom</Link>
+        <form className='bathroomForm'>
+          <input placeholder='Search' onChange={searchBathrooms}></input>
+        </form>
+      </section>
       <div className="container">
         <div className="row justify-content-center">
           {bathrooms.map((bathroom) => {
