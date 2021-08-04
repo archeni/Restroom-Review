@@ -20,11 +20,11 @@ export default function Header({ isLoggedIn }) {
   }, []);
 
   return (
-    <>
-      <Navbar className='navMain' color="light" light expand="md">
+    <div className='navMain'>
+      <Navbar color="light" light expand="md">
         <img src={bathroomLogo} alt='bathroom logo' />
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
+        <NavbarToggler onClick={toggle} className='navToggle' />
+        <Collapse isOpen={isOpen} navbar className='navLogout'>
           <Nav className="mr-auto" navbar>
             { /* When isLoggedIn === true, we will render the Home link */}
             {isLoggedIn &&
@@ -35,6 +35,7 @@ export default function Header({ isLoggedIn }) {
               </>
             }
           </Nav>
+          <hr></hr>
           <Nav navbar>
             {isLoggedIn &&
               <>
@@ -44,6 +45,7 @@ export default function Header({ isLoggedIn }) {
                 </NavItem>
               </>
             }
+            <hr></hr>
             {!isLoggedIn &&
               <>
                 <NavItem>
@@ -57,6 +59,6 @@ export default function Header({ isLoggedIn }) {
           </Nav>
         </Collapse>
       </Navbar>
-    </>
+    </div>
   );
 }

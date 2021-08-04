@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Bathroom from './Bathroom';
 import { getAllBathrooms, Search } from "../../modules/bathroomManager";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { getUserProfileId } from "../../modules/userProfileManager";
+import { Button } from 'reactstrap';
 import './Bathroom.css';
 
 const BathroomList = () => {
   const [bathrooms, setBathrooms] = useState([]);
   const [currentUser, setUser] = useState([]);
+  const history = useHistory();
 
   const getBathrooms = () => {
     getAllBathrooms().then(bathrooms => setBathrooms(bathrooms));
@@ -25,6 +27,10 @@ const BathroomList = () => {
     Search(bathroomInput, true).then(bathrooms => setBathrooms(bathrooms))
   };
 
+  const handleAddBathroom = () => {
+    history.push('/add');
+  }
+
   useEffect(() => {
     getBathrooms();
     getUser();
@@ -34,13 +40,13 @@ const BathroomList = () => {
     <>
       <section className='bathroomHeader'>
         <h3>Bathrooms:</h3>
-        <Link to='/add'>Add a Bathroom</Link>
+        <Button className="btn btn-primary" onClick={handleAddBathroom}>Add a Bathroom</Button>
         <form className='bathroomForm'>
           <input placeholder='Search' onChange={searchBathrooms}></input>
         </form>
       </section>
       <div className="container">
-        <div className="row justify-content-center">
+        <div className="bathroomList row justify-content-center">
           {bathrooms.map((bathroom) => {
             return <Bathroom bathroom={bathroom} key={bathroom.id} user={currentUser} />
           })}

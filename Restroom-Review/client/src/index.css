@@ -4,7 +4,8 @@ body {
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  /* -webkit-text-stroke: 0.15px black; */
+  /* -webkit-text-stroke: 0.15px white; */
+  color: white;
 }
 main {
   margin: 2em;
@@ -41,4 +42,8 @@ p {
 
 .justifyCenter {
   justify-content: center;
+}
+
+.btn {
+  margin: 0.5em;
 }

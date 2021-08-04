@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { getBathroomById } from "../../modules/bathroomManager";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { getReviewByBathroomId } from "../../modules/reviewManager";
+import { Button } from 'reactstrap';
 import Review from "./Review";
 import { getUserProfileId } from "../../modules/userProfileManager";
+import './Review.css';
 
 const ReviewList = () => {
   const [bathroom, setBathroom] = useState([]);
@@ -27,6 +29,39 @@ const ReviewList = () => {
     getUserProfileId().then(oneUser => setUser(oneUser.id));
   }
 
+  const handleDeleteBathroom = () => {
+    history.push(`/delete/${bathroom.id}`);
+  }
+
+  const handleHomePage = () => {
+    history.push('/');
+  }
+
+  const handleAddReview = () => {
+    history.push(`/review/add/${bathroom.id}`);
+  }
+
+  const AuthBathroomDelete = () => {
+    if (currentUser === bathroom.userId) {
+      return (
+        <>
+          <Button className="btn btn-primary" onClick={handleDeleteBathroom}>Delete Bathroom</Button>
+        </>
+      )
+    }
+    else {
+      return null
+    }
+  };
+
+  const BackToHomepage = () => {
+    return (
+      <>
+        <Button className="btn btn-primary" onClick={handleHomePage}>Back To Homepage</Button>
+      </>
+    );
+  };
+
   useEffect(() => {
     getBathroom(id);
     getReviews(id);
@@ -34,13 +69,15 @@ const ReviewList = () => {
   }, []);
 
   return (
-    <>
-      <h3>Bathroom: {bathroom.placeName}</h3>
-      <Link to={`/delete/${bathroom.id}`}>Delete Bathroom</Link>
-      <hr></hr>
-      <Link to={`/review/add/${bathroom.id}`}>Add a Review</Link>
-      <hr></hr>
-      <Link to='/'>Back to Homepage</Link>
+    <div className='reviewHome'>
+      <section className='reviewHeader'>
+        <h3>Bathroom: {bathroom.placeName}</h3>
+        <AuthBathroomDelete />
+        <hr></hr>
+        <Button className="btn btn-primary" onClick={handleAddReview}>Add a Review</Button>
+        <hr></hr>
+        <BackToHomepage />
+      </section>
       <h3>Reviews:</h3>
       <div className="container">
         <div className="row justify-content-center">
@@ -49,7 +86,7 @@ const ReviewList = () => {
           })}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

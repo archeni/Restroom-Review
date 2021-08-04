@@ -2,8 +2,22 @@
   z-index: 1;
   position: sticky;
   top: 0;
+  background-color: rgba(0, 78, 72, 0.5);
 }
 
+img {
+  width: 30%;
+  height: 30%;
+}
+
+.navLogout {
+  margin-left: 2em;
+}
+
+.navToggle {
+  margin-right: 2em;
+}
+/* 
 .navHolder {
   display: flex;
   flex-wrap: nowrap;
@@ -13,7 +27,7 @@
   list-style-type: none;
   margin: 0em 2em;
   border: solid lightblue 2px;
-  /* background-color: darkorchid; */
+  background-color: darkorchid;
   padding: 0.5em;
 }
 
@@ -26,11 +40,7 @@
   color: lightblue;
 }
 
-img {
-  width: 30%;
-  height: 30%;
-}
 
 span {
   text-decoration: underline;
-}
+} */
