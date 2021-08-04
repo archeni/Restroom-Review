@@ -1,14 +1,26 @@
 import React from "react";
 import { Card, CardBody } from "reactstrap";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { Button } from 'reactstrap';
+import './Bathroom.css';
+
 
 export const Bathroom = ({ bathroom, user }) => {
+  const history = useHistory()
+
+  const handleGoToReviews = () => {
+    history.push(`/review/${bathroom.id}`);
+  }
+
+  const handleDeleteBathroom = () => {
+    history.push(`/delete/${bathroom.id}`);
+  }
 
   const AuthDelete = () => {
     if (user === bathroom.userId) {
       return (
         <>
-          <p><Link to={`/delete/${bathroom.id}`}>Delete</Link></p>
+          <Button className="btn btn-primary" onClick={handleDeleteBathroom}>Delete</Button>
         </>
       )
     }
@@ -18,15 +30,15 @@ export const Bathroom = ({ bathroom, user }) => {
   };
 
   return (
-    <Card >
-      <CardBody>
+    <div className='bathrooms'>
+      <div>
         <p>{bathroom.placeName}</p>
         <p>{bathroom.address}</p>
         <p>{bathroom.dateCreated}</p>
-        <p><Link to={`/review/${bathroom.id}`}>Reviews</Link></p>
+        <Button className="btn btn-primary" onClick={handleGoToReviews}>Reviews</Button>
         <AuthDelete />
-      </CardBody>
-    </Card>
+      </div>
+    </div>
   );
 };
 

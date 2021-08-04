@@ -1,13 +1,26 @@
 import React from "react";
-import { Card, CardBody } from "reactstrap";
-import { Link } from "react-router-dom";
+import { CardBody } from "reactstrap";
+import { useHistory } from "react-router-dom";
+import { Button } from 'reactstrap';
+import './Review.css';
 
 export const Review = ({ review, bathroomId, user }) => {
+  const history = useHistory();
+
+
+  const handleEditReview = () => {
+    history.push(`/review/edit/${review.id}/${bathroomId}`);
+  }
+
+  const handleDeleteReview = () => {
+    history.push(`/review/delete/${review.id}/${bathroomId}`);
+  }
+
   const AuthEdit = () => {
     if (user === review.userId) {
       return (
         <>
-          <p><Link to={`/review/edit/${review.id}/${bathroomId}`}>Edit</Link></p>
+          <Button className="btn btn-primary" onClick={handleEditReview}>Edit</Button>
         </>
       )
     }
@@ -20,7 +33,7 @@ export const Review = ({ review, bathroomId, user }) => {
     if (user === review.userId) {
       return (
         <>
-          <p><Link to={`/review/delete/${review.id}/${bathroomId}`}>Delete</Link></p>
+          <Button className="btn btn-primary" onClick={handleDeleteReview}>Delete</Button>
         </>
       )
     }
@@ -31,7 +44,7 @@ export const Review = ({ review, bathroomId, user }) => {
 
 
   return (
-    <Card >
+    <div>
       <CardBody>
         <p>{review.rating}/10</p>
         <p>{review.comment}</p>
@@ -39,7 +52,7 @@ export const Review = ({ review, bathroomId, user }) => {
         <AuthEdit />
         <AuthDelete />
       </CardBody>
-    </Card>
+    </div>
   );
 };
 

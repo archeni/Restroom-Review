@@ -4,12 +4,13 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink
 } from 'reactstrap';
 import { logout } from '../modules/authManager';
+import bathroomLogo from '../images/Restroom-Review-icon.png';
+import './Header.css';
 
 export default function Header({ isLoggedIn }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,11 +20,11 @@ export default function Header({ isLoggedIn }) {
   }, []);
 
   return (
-    <div>
+    <div className='navMain'>
       <Navbar color="light" light expand="md">
-        <NavbarBrand tag={RRNavLink} to="/">Restroom Review</NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
+        <img src={bathroomLogo} alt='bathroom logo' />
+        <NavbarToggler onClick={toggle} className='navToggle' />
+        <Collapse isOpen={isOpen} navbar className='navLogout'>
           <Nav className="mr-auto" navbar>
             { /* When isLoggedIn === true, we will render the Home link */}
             {isLoggedIn &&
@@ -34,6 +35,7 @@ export default function Header({ isLoggedIn }) {
               </>
             }
           </Nav>
+          <hr></hr>
           <Nav navbar>
             {isLoggedIn &&
               <>
@@ -43,6 +45,7 @@ export default function Header({ isLoggedIn }) {
                 </NavItem>
               </>
             }
+            <hr></hr>
             {!isLoggedIn &&
               <>
                 <NavItem>
@@ -56,6 +59,6 @@ export default function Header({ isLoggedIn }) {
           </Nav>
         </Collapse>
       </Navbar>
-    </div >
+    </div>
   );
 }

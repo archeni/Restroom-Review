@@ -31,6 +31,11 @@ export const BathroomForm = () => {
     });
   };
 
+  const handleBackToHome = (evt) => {
+    evt.preventDefault();
+    history.push("/");
+  };
+
   return (
     <Form>
       <FormGroup>
@@ -44,6 +49,7 @@ export const BathroomForm = () => {
           onChange={handleInputChange} />
       </FormGroup>
       <Button className="btn btn-primary" onClick={handleSave}>Submit</Button>
+      <Button className="btn btn-primary" onClick={handleBackToHome}>Back</Button>
     </Form>
   );
 };

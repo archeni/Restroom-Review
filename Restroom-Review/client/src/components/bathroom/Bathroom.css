@@ -1,0 +1,22 @@
+.bathroomHeader {
+  position: sticky;
+  top: 9em;
+  padding: 1em;
+  z-index: 1;
+  background-color: rgba(0, 78, 72, 0.5);
+  color: white;
+  border-radius: 25px;
+  margin: 0.5em;
+}
+
+.container {
+  background-color: rgba(0, 78, 72, 0.5);
+  color: white;
+  border-radius: 25px;
+  margin: 0.5em;
+  padding: 0.3em;
+}
+
+.bathroomList {
+  margin: 0.5em;
+}
