@@ -41,7 +41,7 @@ export const ReviewForm = () => {
   };
 
   return (
-    <Form>
+    <Form className='reviewForm'>
       <FormGroup>
         <Label for="comment">Review:</Label>
         <Input type="text" name="comment" id="comment" placeholder="How was the bathroom?"
@@ -50,7 +50,6 @@ export const ReviewForm = () => {
       </FormGroup>
       <select type='radio' value={review.rating} name="rating" id="rating" onChange={handleInputChange} className='form-control'>
         <option value={0}>Select a Rating</option>
-        <option value={0}>0</option>
         <option value={1}>1</option>
         <option value={2}>2</option>
         <option value={3}>3</option>

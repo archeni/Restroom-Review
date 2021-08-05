@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { editReview, getReviewById } from "../../modules/reviewManager";
+import { Button } from 'reactstrap';
 import './Review.css';
 
 export const ReviewEdit = () => {
@@ -40,18 +41,17 @@ export const ReviewEdit = () => {
   }, []);
 
   return (
-    <>
+    <div className='reviewEdit'>
       <h3>Please change the Review</h3>
       <form>
-        <input type="text"
+        <textarea type="text"
           id="commentEdit"
           name="commentEdit"
           onChange={handleCommentInputChange}
           defaultValue={singleReview.comment}
-        ></input>
+        ></textarea>
         <select type='radio' value={singleReview.rating} name="ratingEdit" id="ratingEdit" onChange={handleRatingInputChange} className='form-control'>
           <option value={0}>Select a Rating</option>
-          <option value={0}>0</option>
           <option value={1}>1</option>
           <option value={2}>2</option>
           <option value={3}>3</option>
@@ -64,15 +64,15 @@ export const ReviewEdit = () => {
           <option value={10}>10</option>
         </select>
       </form>
-      <button
+      <Button
         type="button" disabled={isLoading}
         onClick={EditSingleReview}
         className="btn btn-primary"
-      >Edit Review</button>
+      >Edit Review</Button>
       <Link to={`/review/${bathroomId}`}>
         <button>Back</button>
       </Link>
-    </>
+    </div>
   );
 }
 

@@ -7,6 +7,7 @@ import './Bathroom.css';
 
 export const Bathroom = ({ bathroom, user }) => {
   const history = useHistory()
+  const bathroomDate = new Date(bathroom.dateCreated).toDateString()
 
   const handleGoToReviews = () => {
     history.push(`/review/${bathroom.id}`);
@@ -34,7 +35,7 @@ export const Bathroom = ({ bathroom, user }) => {
       <div>
         <p>{bathroom.placeName}</p>
         <p>{bathroom.address}</p>
-        <p>{bathroom.dateCreated}</p>
+        <p>{bathroomDate}</p>
         <Button className="btn btn-primary" onClick={handleGoToReviews}>Reviews</Button>
         <AuthDelete />
       </div>

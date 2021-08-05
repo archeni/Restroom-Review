@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { deleteReview, getReviewById } from "../../modules/reviewManager";
+import { Button } from 'reactstrap';
+import './Review.css';
 
 export const ReviewDelete = () => {
   const [singleReview, setReview] = useState([]);
@@ -26,17 +28,17 @@ export const ReviewDelete = () => {
   }, []);
 
   return (
-    <>
+    <div className='reviewDelete'>
       <h3>{singleReview.comment}</h3>
-      <button
+      <Button
         type="button" disabled={isLoading}
         onClick={DeleteSingleReview}
         className="btn btn-primary"
-      >Delete Review</button>
+      >Delete Review</Button>
       <Link to={`/review/${bathroomId}`}>
         <button>Back</button>
       </Link>
-    </>
+    </div>
   );
 }
 

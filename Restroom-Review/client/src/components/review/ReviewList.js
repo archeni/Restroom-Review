@@ -27,6 +27,7 @@ const ReviewList = () => {
 
   const getUser = () => {
     getUserProfileId().then(oneUser => setUser(oneUser.id));
+    console.log(currentUser);
   }
 
   const handleDeleteBathroom = () => {
@@ -66,17 +67,18 @@ const ReviewList = () => {
     getBathroom(id);
     getReviews(id);
     getUser();
+    console.log(bathroom);
   }, []);
 
   return (
     <div className='reviewHome'>
       <section className='reviewHeader'>
         <h3>Bathroom: {bathroom.placeName}</h3>
-        <AuthBathroomDelete />
-        <hr></hr>
-        <Button className="btn btn-primary" onClick={handleAddReview}>Add a Review</Button>
-        <hr></hr>
-        <BackToHomepage />
+        <section className='reviewButtons'>
+          <AuthBathroomDelete />
+          <Button className="btn btn-primary" onClick={handleAddReview}>Add a Review</Button>
+          <BackToHomepage />
+        </section>
       </section>
       <h3>Reviews:</h3>
       <div className="container">

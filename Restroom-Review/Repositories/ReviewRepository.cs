@@ -139,6 +139,7 @@ namespace RestroomReview.Repositories
                             Comment = DbUtils.GetString(reader, "Comment"),
                             Rating = DbUtils.GetInt(reader, "Rating"),
                             UserId = DbUtils.GetInt(reader, "UserId"),
+                            DateCreated = DbUtils.GetDateTime(reader, "DateCreated"),
                             BathroomId = id
                         });
                     }

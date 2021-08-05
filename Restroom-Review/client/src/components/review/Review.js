@@ -6,7 +6,7 @@ import './Review.css';
 
 export const Review = ({ review, bathroomId, user }) => {
   const history = useHistory();
-
+  const reviewDate = new Date(review.dateCreated).toDateString()
 
   const handleEditReview = () => {
     history.push(`/review/edit/${review.id}/${bathroomId}`);
@@ -42,12 +42,12 @@ export const Review = ({ review, bathroomId, user }) => {
     }
   };
 
-
   return (
     <div>
       <CardBody>
         <p>{review.rating}/10</p>
         <p>{review.comment}</p>
+        <p>{reviewDate}</p>
         {/* <p>{review.dateCreated}</p> */}
         <AuthEdit />
         <AuthDelete />

@@ -12,7 +12,7 @@ const BathroomList = () => {
   const history = useHistory();
 
   const getBathrooms = () => {
-    getAllBathrooms().then(bathrooms => setBathrooms(bathrooms));
+    getAllBathrooms().then(bathroom => setBathrooms(bathroom));
   };
 
   const getUser = () => {
