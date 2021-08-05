@@ -13,5 +13,6 @@ namespace RestroomReview.Models
         public int Rating { get; set; }
         public int UserId { get; set; }
         public int BathroomId { get; set; }
+        UserProfile userProfile { get; set; }
     }
 }
